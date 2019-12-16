@@ -31,7 +31,8 @@
             "uuid": { "type": "string" },
             "firstLineMatch": { "type": "string" }
           },
-          "required": [ "scopeName" ]
+					"required": [ "scopeName" ],
+					"additionalProperties": true
         }
       ]
     },
