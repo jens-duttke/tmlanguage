@@ -81,7 +81,8 @@
         "disabled": { "type": "integer", "minimum": 0, "maximum": 1 },
         "include": {
           "description": "this allows you to reference a different language, recursively reference the grammar itself or a rule declared in this file’s repository.",
-          "type": "string"
+					"type": "string",
+					"pattern": "^(#\\w+|$self|$base|source(\\.[\\w-]+)+)$"
         },
         "match": {
           "description": "a regular expression which is used to identify the portion of text to which the name should be assigned. Example: '\\b(true|false)\\b'.",
