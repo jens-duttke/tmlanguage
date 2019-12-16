@@ -116,6 +116,12 @@
           "description": "allows you to assign attributes to the captures of the end pattern. Using the captures key for a begin/end rule is short-hand for giving both beginCaptures and endCaptures with same values.",
           "$ref": "#/definitions/captures"
         },
+				"while": {
+					"type": "string"
+				},
+				"whileCaptures": {
+					"$ref": "#/definitions/captures"
+				},
         "patterns": {
           "description": "applies to the region between the begin and end matches",
           "type": "array",
@@ -126,17 +132,17 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 1
-        },
-        "while": {
-          "type": "string"
         }
       },
+			"additionalProperties": false,
       "dependencies": {
-        "begin": [ "end" ],
+				"captures": [ "match" ],
+				"begin": { "anyOf": [ "end", "while" ] },
         "end": [ "begin" ],
-        "contentName": [ "begin", "end" ],
-        "beginCaptures": [ "begin", "end" ],
-        "endCaptures": [ "begin", "end" ],
+				"contentName": [ "begin" ],
+				"beginCaptures": [ "begin" ],
+				"endCaptures": [ "end" ],
+				"whileCaptures": [ "while" ],
         "applyEndPatternLast": [ "end" ]
       }
     },
